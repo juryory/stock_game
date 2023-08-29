@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>管理员页面</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>设置股票价格</h1>
+
+    <!-- 第一个表单：用于更新初始金额和单笔交易 -->
+    <form method="post" action="/set_game_settings">
+        <table>
+            <thead>
+                <tr>
+                    <th>类型</th>
+                    <th>参数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>初始金额</td>
+                    <td><input type="number" name="initial_amount" value="{{ initial_amount }}"></td>
+                </tr>
+                <tr>
+                    <td>单笔交易</td>
+                    <td><input type="number" name="single_trade_amount" value="{{ single_trade_amount }}"></td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="button-center"><input type="submit" value="修改"></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <!-- 第二个表单：用于更新每回合的股票价格 -->
+    <form method="post" action="/set_stock_prices">
+        <table>
+            <thead>
+                <tr>
+                    <th>回合</th>
+                    <th>股票价格</th>
+                    <th>涨幅</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for round_data in all_rounds %}
+                <tr>
+                    <td>{{ round_data[0] }}</td>
+                    <td><input type="number" step="0.01" name="price_{{ round_data[0] }}" value="{{ round_data[1] if round_data[1] }}"></td>
+                    <td>
+                        {% if round_data[2] %}
+                        {{ round_data[2]|round(2) }}%
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="4" class="button-center"><input type="submit" value="更新股票价格"></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+</body>
+</html>

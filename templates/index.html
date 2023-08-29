@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Trading Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>欢迎来到火星股市，请选择你的身份</h1>
+        <ul class="nav-list">
+            <li><a href="{{ url_for('admin') }}">后台</a></li>
+            <li><a href="{{ url_for('player') }}">投资者</a></li>
+            <li><a href="{{ url_for('screen') }}">大屏</a></li>
+        </ul>
+    </div>
+    
+</body>
+</html>

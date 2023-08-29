@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>大屏显示</title>
+</head>
+<body>
+    <h1>交易大屏</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>选手名字</th>
+                <th>交易金额</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for player_data in players_data %}
+            <tr>
+                <td>{{ player_data[0] }}</td> <!-- 注意这里我们改为player_data[1]和player_data[2]，因为第一个字段是ID -->
+                <td>{{ player_data[2] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

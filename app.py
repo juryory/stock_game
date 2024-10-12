@@ -90,21 +90,6 @@ def set_stock_prices():
 
     return redirect(url_for('admin'))
 
-
-# @app.route('/set_stock_price', methods=['POST'])
-# def set_stock_price():
-#     round_number = request.form.get('round')
-#     price = request.form.get('price')
-
-#     conn = sqlite3.connect('stock_game.db')
-#     c = conn.cursor()
-    
-#     c.execute('INSERT OR REPLACE INTO stock_price (round, price) VALUES (?, ?)', (round_number, price))
-#     conn.commit()
-#     conn.close()
-
-#     return redirect(url_for('admin'))
-
 @app.route('/trade', methods=['POST'])
 def trade():
     player_name = request.form.get('player_name')
